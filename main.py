@@ -38,6 +38,14 @@ def dPhone(ride_id):
     phone=mycursor.fetchall()
 
     return phone[0][0]
+
+
+def rideI():
+    sql2 = "select ride_id from ride_details ORDER BY ride_id DESC LIMIT 1"
+    mycursor.execute(sql2)
+    ride_id=mycursor.fetchall()
+    print(ride_id)
+    return ride_id[0][0]
 # def fixOutput(givenString):
 #     new_str=''
 #     for char in givenString:
@@ -45,12 +53,14 @@ def dPhone(ride_id):
 #             new_str+=char
 #             return new_str
 
+
 window=Tk()
 Frame_details=Frame(window,bg="white")
 Frame_details.place(x=0,y=0,height=800,width=500)
 l1=Label(Frame_details, text="         Ride Details",font=("Arial",30,"bold")).place(x=90,y=80)
 
-ride_id=4522
+
+ride_id=rideI()
 
 desc=Label(Frame_details, text=f"          Your cab with number {ride_id} is on its way ",font=("Times New Roman",15)).place(x=90,y=125)
 
